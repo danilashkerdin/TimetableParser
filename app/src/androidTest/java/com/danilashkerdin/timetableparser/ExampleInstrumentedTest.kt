@@ -1,4 +1,4 @@
-package com.example.timetableparser
+package com.danilashkerdin.timetableparser
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry

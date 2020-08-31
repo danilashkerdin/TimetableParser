@@ -1,4 +1,4 @@
-package com.example.timetableparser
+package com.danilashkerdin.timetableparser
 
 import java.util.*
 

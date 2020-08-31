@@ -3,13 +3,21 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
+    signingConfigs {
+        TimetableParser {
+            storeFile file('C:\\Users\\danil\\Desktop\\android_apps_keystore.jks')
+            storePassword '23pomipaaAA@@'
+            keyAlias 'TimetableParser'
+            keyPassword '23pomipaaAA@@'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.example.timetableparser"
+        applicationId "com.danilashkerdin.timetableparser"
         minSdkVersion 15
-        targetSdkVersion 29
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
