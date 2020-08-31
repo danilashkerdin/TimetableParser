@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">MSAL.Schedule</string>
+    <string name="forward_button"><![CDATA[Forward]]></string>
+    <string name="back_button"><![CDATA[Back]]></string>
+    <string name="online_downloaded">The actual ONLINE version of the schedule was downloaded successfully!</string>
+    <string name="offline_downloaded">The saved OFFLINE version of the schedule was downloaded!</string>
+    <string name="downloading_failure">Downloading FAILURE!</string>
+    <string name="check">Check</string>
+    <string name="loginTextView_text">Login</string>
+    <string name="passwordTextView_text">Password</string>
+    <string name="signIn_button">Sign In</string>
+    <string name="prompt_email" translatable="false">Email</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="online_status">Online</string>
+    <string name="offline_status">Offline</string>
+    <string name="error_status">Error</string>
+    <string name="sign_in_successfully">Signed in SUCCESSFULLY!</string>
+    <string name="sign_in_failure">SignIn failure!</string>
+    <string name="try_again">Try again!</string>
+    <string name="sent_data">Your data have been sent!</string>
+    <string name="found_data">Saved SIGN IN data have been found.</string>
+    <string name="saved_loading_question">Do you want to load previously SAVED schedule?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="loading">Schedule loading.</string>
+    <string name="wait">Please wait…</string>
+    <string name="warning">Be careful! A saved schedule may not be relevant.</string>
+    <string name="first" id="1">Mon</string>
+    <string name="second" id="2">Tue</string>
+    <string name="third" id="3">Wed</string>
+    <string name="fourth" id="4">Thu</string>
+    <string name="fifth" id="5">Fri</string>
+    <string name="sixth" id="6">Sat</string>
+    <string name="seventh" id="7">Sun</string>
+    <string name="no_classes">Freedom</string>
+    <string name="will_download">Do you want to download current version of schedule from internet?</string>
+    <string name="schedule_not_found">Schedule on selected time period was not found on this device</string>
+    <string name="schedule">Schedule</string>
+    <string name="saved_schedule_found">Saved schedule found in device storage.</string>
+    <string name="num_simbol">№</string>
+    <string name="time">Time</string>
+    <string name="classroom">Classroom</string>
+    <string name="type">Type</string>
+    <string name="tab">\t\t\t\t</string>
+    <string name="internet_connection">internet connection</string>
+    <string name="and">and</string>
+    <string name="auth_data">authentication data</string>
+</resources>

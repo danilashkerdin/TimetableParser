@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">МГЮА.Расписание</string>
+    <string name="forward_button">Вперёд</string>
+    <string name="back_button">Назад</string>
+    <string name="online_downloaded">Была загружена АКТУАЛЬНАЯ версия расписания!</string>
+    <string name="offline_downloaded">Была загружена последняя СОХРАНЁННАЯ на устройсте версия расписания!</string>
+    <string name="downloading_failure">ОШИБКА загрузки!</string>
+    <string name="loginTextView_text">Логин</string>
+    <string name="passwordTextView_text">Пароль</string>
+    <string name="signIn_button">Войти</string>
+    <string name="welcome">Добро пожаловать!</string>
+    <string name="invalid_username">Некорректное имя пользователя</string>
+    <string name="invalid_password">Пароль должен превышать 5 символов</string>
+    <string name="login_failed">Ошибка входа</string>
+    <string name="online_status">Онлайн</string>
+    <string name="offline_status">Оффлайн</string>
+    <string name="error_status">Ошибка</string>
+    <string name="sign_in_successfully">Вход успешно выполнен!</string>
+    <string name="sign_in_failure">Неудачная попытка входа!</string>
+    <string name="sent_data">Данные были успешно отправлены!</string>
+    <string name="found_data">Были найдены сохранённые ранее ДАННЫЕ ДЛЯ ВХОДА.</string>
+    <string name="try_again"> Попробуйте ещё раз.</string>
+    <string name="saved_loading_question">Хотите загрузить СОХРАНЁННОЕ ранее расписание?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="loading">Загрузка расписания.</string>
+    <string name="wait">Пожалуйста подождите…</string>
+    <string name="warning">Будьте осторожны! Сохранённое расписание может не являться актуальным.</string>
+    <string name="first" id="1">Пн</string>
+    <string name="second" id="2">Вт</string>
+    <string name="third" id="3">Ср</string>
+    <string name="fourth" id="4">Чт</string>
+    <string name="fifth" id="5">Пт</string>
+    <string name="sixth" id="6">Сб</string>
+    <string name="seventh" id="7">Вс</string>
+    <string name="no_classes">Свобода</string>
+    <string name="will_download">Хотите загрузить актуальную версию расписания из интернета?</string>
+    <string name="schedule_not_found">На устройстве не было найдено расписание на выбранный период времени</string>
+    <string name="schedule">Расписание</string>
+    <string name="saved_schedule_found">В памяти устройства найдено сохранённое расписание.</string>
+    <string name="num_simbol">№</string>
+    <string name="time">Время</string>
+    <string name="classroom">Аудитория</string>
+    <string name="type">Занятие</string>
+    <string name="tab">\t\t\t\t</string>
+    <string name="check">Проверьте</string>
+    <string name="internet_connection">интернет соединение</string>
+    <string name="and">и</string>
+    <string name="auth_data">учётные данные</string>
+</resources>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="start"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/auth_form_margin_top"
+        android:layout_marginLeft="@dimen/loginForm_margin"
+        android:layout_marginRight="@dimen/loginForm_margin"
+
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:theme="@style/AppTheme"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/progressBar_size"
+            android:layout_marginTop="@dimen/top_bottom_smallProgressBar_margin"
+            android:layout_marginBottom="@dimen/top_bottom_smallProgressBar_margin"
+            android:indeterminate="true"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/logo_size"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            app:srcCompat="@drawable/logo"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/loginTextView"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/loginTextView_text"
+
+            android:textColorHighlight="@color/colorPrimaryLight"
+            android:textColorLink="@color/colorPrimaryDark"
+            android:singleLine="true" />
+
+        <EditText
+            android:id="@+id/passwordTextView"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:textColorHighlight="@color/colorPrimaryLight"
+            android:textColorLink="@color/colorPrimaryDark"
+
+            android:hint="@string/passwordTextView_text"
+            android:inputType="textPassword"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/button_signIn"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:layout_margin="3dp"
+
+            android:text="@string/signIn_button"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/buttonTextSize"
+
+            android:background="@drawable/rounded_button"
+            tools:ignore="ButtonStyle" />
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
