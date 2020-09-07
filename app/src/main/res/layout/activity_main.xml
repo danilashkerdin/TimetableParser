@@ -16,12 +16,10 @@
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_margin="5dp"
             android:firstDayOfWeek="0"
-
-            android:weekDayTextAppearance="@color/colorPrimaryDark" />
+            android:weekNumberColor="@color/textColor"
+            android:background="@drawable/shape_back" />
 
 
         <ProgressBar
@@ -34,8 +32,17 @@
 
             />
 
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/list_view_margin"
+            android:entries="@array/emptyDay"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="@dimen/divider_heigth" />
 
-        <TextView
+
+        <!--<TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -48,7 +55,7 @@
             android:textColor="@android:color/black"
             android:textSize="@dimen/mainTextViewTextSize"
             tools:ignore="RtlSymmetry"
-            android:paddingStart="@dimen/textView_padding" />
+            android:paddingStart="@dimen/textView_padding" />-->
 
     </LinearLayout>
 

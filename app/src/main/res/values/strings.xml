@@ -48,4 +48,6 @@
     <string name="internet_connection">internet connection</string>
     <string name="and">and</string>
     <string name="auth_data">authentication data</string>
+    <string name="update_question">\"Do you want to update your schedule for the selected period? \"</string>
+    <string name="will_be_updated">\"The schedule will be updated to the current one. \"</string>
 </resources>

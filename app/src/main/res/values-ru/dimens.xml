@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="update_button_size">40dp</dimen>
-    <dimen name="list_view_margin">5dp</dimen>
-    <dimen name="scroll_bar_margin">5dp</dimen>
-    <dimen name="textView_padding">20dp</dimen>
-    <dimen name="auth_form_margin_top">130dp</dimen>
-</resources>

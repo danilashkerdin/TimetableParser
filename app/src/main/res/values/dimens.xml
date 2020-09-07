@@ -5,7 +5,7 @@
     <dimen name="headTextViewTextSize">24sp</dimen>
     <dimen name="mainTextViewTextSize">20sp</dimen>
     <dimen name="buttonTextSize">20sp</dimen>
-    <dimen name="logo_size">180dp</dimen>
+    <dimen name="logo_size">200dp</dimen>
     <dimen name="loginForm_margin">30dp</dimen>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -14,8 +14,15 @@
     <dimen name="smallProgressBar_size">@dimen/headTextViewTextSize</dimen>
     <dimen name="top_bottom_smallProgressBar_margin">50dp</dimen>
     <dimen name="update_button_size">40dp</dimen>
-    <dimen name="list_view_margin">5dp</dimen>
+    <dimen name="list_view_margin">2dp</dimen>
     <dimen name="scroll_bar_margin">5dp</dimen>
     <dimen name="textView_padding">20dp</dimen>
-    <dimen name="auth_form_margin_top">130dp</dimen>
+    <dimen name="auth_form_margin_top">50dp</dimen>
+    <dimen name="adapter_list_item_radius">10dp</dimen>
+    <dimen name="recyclerView_padding">5dp</dimen>
+    <dimen name="cardview_radius">20dp</dimen>
+    <dimen name="divider_heigth">5dp</dimen>
+    <dimen name="border_with">2dp</dimen>
+    <dimen name="min_list_item_height">50dp</dimen>
+    <dimen name="login_form_shape_padding">10dp</dimen>
 </resources>

@@ -9,4 +9,10 @@
         <item id="6" name="sixth">@string/sixth</item>
         <item id="7" name="seventh">@string/seventh</item>
     </array>
+
+    <string-array name="emptyDay">
+        <item id="0" name="lesson1">@string/no_classes</item>
+        <item id="1" name="lesson2">@string/no_classes</item>
+    </string-array>
+
 </resources>

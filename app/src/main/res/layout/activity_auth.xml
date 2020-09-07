@@ -13,9 +13,10 @@
         android:layout_marginTop="@dimen/auth_form_margin_top"
         android:layout_marginLeft="@dimen/loginForm_margin"
         android:layout_marginRight="@dimen/loginForm_margin"
-
+        android:padding="@dimen/login_form_shape_padding"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/shape_back">
 
         <ProgressBar
             android:id="@+id/progressBar"

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainTextView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/list_view_margin"
+    android:gravity="center"
+    android:textColor="@android:color/black"
+    android:textSize="@dimen/mainTextViewTextSize"
+    android:bufferType="spannable"
+    android:background="@drawable/shape_back"
+    android:minHeight="@dimen/min_list_item_height" />

@@ -5,10 +5,10 @@ import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
 import android.text.Html.fromHtml
-import android.text.method.ScrollingMovementMethod
+import android.text.Spanned
 import android.util.Log
 import android.view.View
-import android.widget.TextView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -59,8 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         @SuppressLint("SetTextI18n")
         override fun onPreExecute() {
-            textView.text =
-                "\u2B73  " + getString(R.string.loading) + "\n" + "⌛  " + getString(R.string.wait)
+            //textView.text = "\u2B73  " + getString(R.string.loading) + "\n" + "⌛  " + getString(R.string.wait)
             runningTasksCounter++
             //setDate(counter)
             progressBar.visibility = View.VISIBLE
@@ -146,7 +145,7 @@ class MainActivity : AppCompatActivity() {
                                 getString(R.string.try_again),
                         Toast.LENGTH_LONG
                     ).show()
-                    textView.text = "❌  " + getString(R.string.error_status) + "  ❌"
+                    //textView.text = "❌  " + getString(R.string.error_status) + "  ❌"
                 }
 
                 progressBar.visibility = View.INVISIBLE
@@ -160,7 +159,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         calendarView.date = globalCalendar.timeInMillis
-        textView.movementMethod = ScrollingMovementMethod()
+        //textView.movementMethod = ScrollingMovementMethod()
         isOnline = intent.getBooleanExtra("status", false)
     }
 
@@ -183,6 +182,8 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
+        //calendarView.setOnLongClickListener { letUpdate() }
+
     }
 
     /*@SuppressLint("SetTextI18n")
@@ -198,27 +199,30 @@ class MainActivity : AppCompatActivity() {
         loader.execute(counter)
     }*/
 
-
     private fun showTextContent(lessons: List<List<String>>?) {
         Log.e("showContent_Main", lessons.toString())
+
         if (!lessons.isNullOrEmpty()) {
-            textView.text =
+
+            /*textView.text =
                 "" /* + getString(R.string.tab) + getString(R.string.num_simbol) +
                         getString(R.string.tab) +getString(R.string.time)+
                         getString(R.string.tab) +getString(R.string.classroom) +
                         getString(R.string.tab) + "\n" + "\n"
                    */
+             */
 
-            var resultString = ""
+            val listString = mutableListOf<Spanned>()
 
             lessons.forEach {
-                resultString +=
 
-                    coloredString(
-                        "\uD83D\uDCCC" + getString(R.string.tab) + "<b>" + it[3] + "</b>" +
-                                getString(R.string.tab) + " " + "<br>",
-                        resources.getColor(R.color.colorPrimary)
-                    ) +
+                val resultString =
+                    "<br>" +
+                            coloredString(
+                                "\uD83D\uDCCC" + getString(R.string.tab) + "<b>" + it[3] + "</b>"
+                                        + getString(R.string.tab) + " " + "<br>",
+                                resources.getColor(R.color.colorPrimary)
+                            ) +
 
                             "⏰  " + /*it[0]+"." +getString(R.string.tab)+*/ it[1] + getString(R.string.tab) +
 
@@ -226,11 +230,24 @@ class MainActivity : AppCompatActivity() {
 
                             "📕  " + "<b>" + it[4] + "</b>" + "<br>" +
 
-                            "\uD83D\uDCBC  " + it[5] +/*"\n"+it[6] + */ "<br>" + "<br>"
+                            "\uD83D\uDCBC  " + it[5] +/*"\n"+it[6] + */ "<br>"
+
+                listString.add(fromHtml(resultString))
             }
-            textView.setText(fromHtml(resultString), TextView.BufferType.SPANNABLE)
+
+
+            val adapter = ArrayAdapter<Spanned>(this, R.layout.list_tem, listString)
+
+            listView.adapter = adapter
+
+            //textView.setText(fromHtml(resultString), TextView.BufferType.SPANNABLE)
         } else {
-            textView.text = "🙈  " + getString(R.string.no_classes) + "  🙉"
+            val resultString = "<br> 🙈  " + getString(R.string.no_classes) + "  🙉 <br>"
+            val listString = mutableListOf<Spanned>(fromHtml(resultString))
+            val adapter = ArrayAdapter<Spanned>(this, R.layout.list_tem, listString)
+
+            listView.adapter = adapter
+
         }
     }
 
@@ -240,8 +257,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun onDateChangeListener(year: Int, month: Int, dayOfMonth: Int) {
 
-        globalCalendar.set(year, month, dayOfMonth)
-        downloadDailySchedule(globalCalendar)
+        if (globalCalendar.get(Calendar.DAY_OF_MONTH) == dayOfMonth &&
+            globalCalendar.get(Calendar.MONTH) == month &&
+            globalCalendar.get(Calendar.YEAR) == year
+        ) {
+            letUpdate()
+        } else {
+            globalCalendar.set(year, month, dayOfMonth)
+            downloadDailySchedule(globalCalendar)
+        }
+
+
     }
 
     private fun downloadDailySchedule(calendar: Calendar = globalCalendar) {
@@ -266,6 +292,25 @@ class MainActivity : AppCompatActivity() {
             builder.setNegativeButton(getString(R.string.no)) { _, _ -> }
             builder.create().show()
 
+        }
+    }
+
+    private fun letUpdate() {
+        try {
+            Log.e("onCalendarLongClick", "INSIDE")
+            val builder = AlertDialog.Builder(this@MainActivity)
+            builder.setTitle(getString(R.string.update_question))
+            builder.setMessage(getString(R.string.will_be_updated))
+            builder.setNegativeButton(getString(R.string.no)) { _, _ -> }
+            builder.setPositiveButton(getString(R.string.yes)) { _, _ ->
+                val loader = Loader(authInfo[0], authInfo[1])
+                //calendarView.date = calendar.timeInMillis
+                val localDateReq = date.getDateReq(globalCalendar)
+                loader.execute(localDateReq)
+            }
+            builder.create().show()
+        } catch (e: Exception) {
+            Log.e("onCalendarLongClick", e.toString())
         }
     }
 
