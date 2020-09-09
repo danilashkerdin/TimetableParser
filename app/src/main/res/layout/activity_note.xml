@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NoteActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:minHeight="@dimen/min_list_item_height"
+            android:text="@string/notes"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/headTextViewTextSize"
+            android:paddingTop="5dp"
+            android:layout_margin="@dimen/list_view_margin" />
+
+        <EditText
+            android:id="@+id/editor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="@dimen/list_view_margin"
+            android:background="@drawable/shape_back"
+            android:gravity="top"
+            android:padding="@dimen/textView_padding"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/mainTextViewTextSize" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/buttonSave"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+
+                android:text="@string/save"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/buttonTextSize"
+
+                android:background="@drawable/rounded_button"
+                tools:ignore="ButtonStyle" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

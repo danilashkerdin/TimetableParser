@@ -7,4 +7,5 @@
     <color name="colorBoarder">#290101</color>
     <color name="background">#FFFFFF</color>
     <color name="textColor">#811818</color>
+    <color name="darkGray">#99332D2D</color>
 </resources>

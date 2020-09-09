@@ -19,7 +19,8 @@
             android:layout_margin="5dp"
             android:firstDayOfWeek="0"
             android:weekNumberColor="@color/textColor"
-            android:background="@drawable/shape_back" />
+            android:background="@drawable/shape_back"
+            android:longClickable="true" />
 
 
         <ProgressBar

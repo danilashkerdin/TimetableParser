@@ -48,6 +48,10 @@
     <string name="internet_connection">интернет соединение</string>
     <string name="and">и</string>
     <string name="auth_data">учётные данные</string>
-    <string name="update_question">\"Do you want to update your schedule for the selected period? \"</string>
-    <string name="will_be_updated">\"The schedule will be updated to the current one. \"</string>
+    <string name="update_question">Хотите обновить расписание на выбранный период? </string>
+    <string name="will_be_updated">Расписание будет обновлено на актуальное. </string>
+    <string name="notes">Заметки</string>
+    <string name="save">Сохранить</string>
+    <string name="saving_error">\"Saving error! \"</string>
+    <string name="successfully_saved_note">\"Note saved successfully! \"</string>
 </resources>

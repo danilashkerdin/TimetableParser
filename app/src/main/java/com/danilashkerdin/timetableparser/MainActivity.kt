@@ -3,6 +3,7 @@ package com.danilashkerdin.timetableparser
 import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Html.fromHtml
 import android.text.Spanned
@@ -30,32 +31,56 @@ class MainActivity : AppCompatActivity() {
 
     private val date = Date()
 
-    //Reads login and password from loginFileName and passwordFileName
-    private fun getAuthInfo(
-        context: Context = this,
-        loginFileName: String = LOGIN_FILE,
-        passwordFileName: String = PASSWORD_FILE
-    ) {
-        try {
-            context.openFileInput(loginFileName).use {
-                authInfo[0] = it.readBytes().toString(Charsets.UTF_8)
-            }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-            context.openFileInput(passwordFileName).use {
-                authInfo[1] = it.readBytes().toString(Charsets.UTF_8)
-            }
-        } catch (e: Exception) {
-            Log.e("ReadingException", "$e. Reading auth error")
+        calendarView.date = globalCalendar.timeInMillis
+        //textView.movementMethod = ScrollingMovementMethod()
+        isOnline = intent.getBooleanExtra("status", false)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        getAuthInfo()
+
+        globalCalendar = Calendar.getInstance()
+
+        //Downloading today schedule
+        downloadDailySchedule(globalCalendar)
+
+        //Starts dateChangeListener
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            onDateChangeListener(
+                year,
+                month,
+                dayOfMonth
+            )
         }
+
+        listView.setOnItemLongClickListener { _, _, position, _ ->
+            onItemLongClickListener(position)
+        }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        Log.e("onActivityResult", resultCode.toString())
+        if (resultCode == 1) {
+            Toast.makeText(this, getString(R.string.successfully_saved_note), Toast.LENGTH_SHORT)
+                .show()
+        } else {
+            Toast.makeText(this, getString(R.string.saving_error), Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     //Data loading AsyncTask class
     @SuppressLint("StaticFieldLeak")
-    inner class Loader(login: String, password: String) : DataLoader(
-        login,
-        password,
-        this
-    ) {
+    inner class Loader(login: String, password: String) : DataLoader(login, password, this) {
 
         @SuppressLint("SetTextI18n")
         override fun onPreExecute() {
@@ -85,8 +110,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPostExecute(result: MutableList<List<String>>?) {
             super.onPostExecute(result)
-            /*
-            if (fileExists) {
+            /*if (fileExists) {
 
                 /*if (isOnline) {
                     Toast.makeText(applicationContext, getString(R.string.online_downloaded), Toast.LENGTH_LONG).show()
@@ -127,23 +151,23 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(
                             applicationContext,
                             getString(R.string.online_downloaded),
-                            Toast.LENGTH_LONG
+                            Toast.LENGTH_SHORT
                         ).show()
-                        showTextContent(result)
+                        showLessonsContent(result)
                     } else {
                         Toast.makeText(
                             applicationContext,
                             getString(R.string.offline_downloaded),
-                            Toast.LENGTH_LONG
+                            Toast.LENGTH_SHORT
                         ).show()
-                        showTextContent(result)
+                        showLessonsContent(result)
                     }
                 } else {
                     Toast.makeText(
                         applicationContext,
                         getString(R.string.downloading_failure) + " " +
                                 getString(R.string.try_again),
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
                     //textView.text = "❌  " + getString(R.string.error_status) + "  ❌"
                 }
@@ -154,52 +178,38 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    //Reads login and password from loginFileName and passwordFileName
+    private fun getAuthInfo(
+        context: Context = this,
+        loginFileName: String = LOGIN_FILE,
+        passwordFileName: String = PASSWORD_FILE
+    ) {
+        try {
+            context.openFileInput(loginFileName).use {
+                authInfo[0] = it.readBytes().toString(Charsets.UTF_8)
+            }
 
-        calendarView.date = globalCalendar.timeInMillis
-        //textView.movementMethod = ScrollingMovementMethod()
-        isOnline = intent.getBooleanExtra("status", false)
-    }
-
-    override fun onResume() {
-        super.onResume()
-
-        getAuthInfo()
-
-        globalCalendar = Calendar.getInstance()
-
-        //Downloading today schedule
-        downloadDailySchedule(globalCalendar)
-
-        //Starts dateChangeListener
-        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            onDateChangeListener(
-                year,
-                month,
-                dayOfMonth
-            )
+            context.openFileInput(passwordFileName).use {
+                authInfo[1] = it.readBytes().toString(Charsets.UTF_8)
+            }
+        } catch (e: Exception) {
+            Log.e("ReadingException", "$e. Reading auth error")
         }
-
-        //calendarView.setOnLongClickListener { letUpdate() }
-
     }
 
-    /*@SuppressLint("SetTextI18n")
-    private fun setDate(counter: Int){
-        val req = date.getDateReq(counter = counter)
-        val weekDays = resources.getStringArray(R.array.weekdays)
-        val dayOfWeek = weekDays[date.getDayOfWeekNumber(req)-1]
-        headTextView.text = "$req, $dayOfWeek"
-    }*/
+    private fun onItemLongClickListener(position: Int): Boolean {
+        val dateReq = date.getDateReq(globalCalendar)
 
-    /*private fun buttonClickExecutor(counter: Int) {
-        val loader = Loader(authInfo[0], authInfo[1])
-        loader.execute(counter)
-    }*/
+        val intent = Intent(this@MainActivity, NoteActivity::class.java)
+        intent.putExtra("position", position)
+        intent.putExtra("dateReq", dateReq)
 
-    private fun showTextContent(lessons: List<List<String>>?) {
+        startActivityForResult(intent, 1)
+
+        return true
+    }
+
+    private fun showLessonsContent(lessons: List<List<String>>?) {
         Log.e("showContent_Main", lessons.toString())
 
         if (!lessons.isNullOrEmpty()) {
@@ -278,9 +288,8 @@ class MainActivity : AppCompatActivity() {
 
         try {
             val lessons = loader.getDayFromFile("schedule_$localDateReq.html")
-            showTextContent(lessons)
+            showLessonsContent(lessons)
         } catch (e: FileNotFoundException) {
-            //Toast.makeText(applicationContext, getString(R.string.downloading_failure), Toast.LENGTH_LONG).show()
             val builder = AlertDialog.Builder(this@MainActivity)
             builder.setTitle(getString(R.string.schedule_not_found) + "  \uD83D\uDD0E")
             builder.setMessage(getString(R.string.will_download))
@@ -288,14 +297,12 @@ class MainActivity : AppCompatActivity() {
                 //Toast.makeText( applicationContext, getString(R.string.offline_downloaded), Toast.LENGTH_LONG).show()
                 loader.execute(localDateReq)
             }
-
             builder.setNegativeButton(getString(R.string.no)) { _, _ -> }
             builder.create().show()
-
         }
     }
 
-    private fun letUpdate() {
+    private fun letUpdate(): Boolean {
         try {
             Log.e("onCalendarLongClick", "INSIDE")
             val builder = AlertDialog.Builder(this@MainActivity)
@@ -312,6 +319,20 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e("onCalendarLongClick", e.toString())
         }
+
+        return true
     }
 
+    /*@SuppressLint("SetTextI18n")
+    private fun setDate(counter: Int){
+        val req = date.getDateReq(counter = counter)
+        val weekDays = resources.getStringArray(R.array.weekdays)
+        val dayOfWeek = weekDays[date.getDayOfWeekNumber(req)-1]
+        headTextView.text = "$req, $dayOfWeek"
+    }*/
+
+    /*private fun buttonClickExecutor(counter: Int) {
+        val loader = Loader(authInfo[0], authInfo[1])
+        loader.execute(counter)
+    }*/
 }

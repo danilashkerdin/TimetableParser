@@ -48,7 +48,8 @@ class AuthActivity : AppCompatActivity() {
         )
         loginTextView.setText(authInfo[0])
         passwordTextView.setText(authInfo[1])
-        Toast.makeText(applicationContext, getString(R.string.found_data), Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext, getString(R.string.found_data), Toast.LENGTH_SHORT)
+            .show()
     }
 
     private fun saveStringToFile(str: String, fileName: String) {
@@ -199,7 +200,7 @@ class AuthActivity : AppCompatActivity() {
                     Toast.makeText(
                         applicationContext,
                         getString(R.string.sign_in_successfully) + " " + getString(R.string.online_downloaded),
-                        Toast.LENGTH_LONG
+                        Toast.LENGTH_SHORT
                     ).show()
 
                     //Saving login, password and data

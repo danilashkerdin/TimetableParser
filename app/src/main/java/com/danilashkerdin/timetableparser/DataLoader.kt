@@ -75,7 +75,7 @@ abstract class DataLoader(
             isOnline = false
         } else {
             isOnline = true
-            saveStringToFile(doc.toString(), "document.html")
+            //saveStringToFile(doc.toString(), "document.html")
             //Log.e("doc_weekData", doc.toString())
 
             for (dayOfWeekNumber in 1..7) {
@@ -88,7 +88,7 @@ abstract class DataLoader(
 
     }
 
-    public fun saveDayToFile(lessons: MutableList<List<String>>, fileName: String) {
+    fun saveDayToFile(lessons: MutableList<List<String>>, fileName: String) {
         try {
             context.openFileOutput(fileName, Context.MODE_PRIVATE).use {
                 it.write("<html><head></head><body>\n".toByteArray())
@@ -119,7 +119,7 @@ abstract class DataLoader(
         for (elem in elements) {
             //val les = elements?.select("lesson")?.get(index)
             Log.e("getDay_lesson", elem.toString())
-            var properties = mutableListOf<String>()
+            val properties = mutableListOf<String>()
 
             if (elem.hasText()) {
                 for (prop in elem.children()) {
@@ -158,6 +158,8 @@ abstract class DataLoader(
             null
         }
     }
+
+    /* Legacy methods
 
     fun getDataFromInternet(
         counter: Int = 0
@@ -200,6 +202,9 @@ abstract class DataLoader(
         }
     }
 
+
+     */
+
     private fun dataPreparing(table: Elements, weekDayNumber: Int): MutableList<List<String>> {
         val lessons: MutableList<List<String>> = mutableListOf()
 
@@ -207,13 +212,13 @@ abstract class DataLoader(
         for (rowNum in 0..7) {
 
             var lessonNum: String
-            var lessonTime = ""
-            var lessonPlace = ""
-            var lessonType = ""
+            var lessonTime: String
+            var lessonPlace: String
+            var lessonType: String
             var lessonName = ""
             var lessonLector = ""
             var link = ""
-            var lessonData: List<String>? = null
+            var lessonData: List<String>?
 
             if (table.isNotEmpty()) {
                 val row = table.select("tr")[rowNum]

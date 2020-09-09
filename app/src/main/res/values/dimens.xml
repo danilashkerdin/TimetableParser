@@ -2,7 +2,7 @@
 <resources>
     <dimen name="button_radius">15dp</dimen>
     <dimen name="stroke_width">0dp</dimen>
-    <dimen name="headTextViewTextSize">24sp</dimen>
+    <dimen name="headTextViewTextSize">28sp</dimen>
     <dimen name="mainTextViewTextSize">20sp</dimen>
     <dimen name="buttonTextSize">20sp</dimen>
     <dimen name="logo_size">200dp</dimen>
@@ -14,7 +14,7 @@
     <dimen name="smallProgressBar_size">@dimen/headTextViewTextSize</dimen>
     <dimen name="top_bottom_smallProgressBar_margin">50dp</dimen>
     <dimen name="update_button_size">40dp</dimen>
-    <dimen name="list_view_margin">2dp</dimen>
+    <dimen name="list_view_margin">6dp</dimen>
     <dimen name="scroll_bar_margin">5dp</dimen>
     <dimen name="textView_padding">20dp</dimen>
     <dimen name="auth_form_margin_top">50dp</dimen>
