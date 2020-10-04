@@ -5,6 +5,9 @@
 <li>Locally store the downloaded schedule and view it without using internet connection.</li>
 <li>Make notes to your lessons if you want to remember somthing useful, write hometask e.t.c.</li>
 </ol>
+
+<p><a href="MSAL.Schedule_v.2.0.apk"><b> DOWNLOAD NOW </b></a><p>
+  
 <p>
 <img src="screenshots/Screenshot_20201004-113353_MSALSchedule.jpg" width="200">
 <img src="screenshots/Screenshot_20201004-113302_MSALSchedule.jpg" width="200">
