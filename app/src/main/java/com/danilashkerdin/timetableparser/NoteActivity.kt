@@ -40,7 +40,7 @@ class NoteActivity : AppCompatActivity() {
 
         var result = false
         if (str != "") result = saveStringToFile(str, fileName)
-        val res = if (result) 1 else 0
+        val res = if (result) 0 else 1
 
         val intent = Intent()
         setResult(res, intent)

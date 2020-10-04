@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         Log.e("onActivityResult", resultCode.toString())
-        if (resultCode == 1) {
+        if (resultCode == 0) {
             Toast.makeText(this, getString(R.string.successfully_saved_note), Toast.LENGTH_SHORT)
                 .show()
         } else {

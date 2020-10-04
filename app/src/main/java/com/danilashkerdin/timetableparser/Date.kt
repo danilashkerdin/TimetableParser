@@ -2,7 +2,7 @@ package com.danilashkerdin.timetableparser
 
 import java.util.*
 
-class Date() {
+class Date {
 
     //Counter means how many days to future or past we need to shift from today date
     fun getDateReq(c: Calendar = Calendar.getInstance(), counter: Int = 0): String {

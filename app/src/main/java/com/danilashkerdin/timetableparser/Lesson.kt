@@ -8,6 +8,4 @@ class Lesson(
     var name: String,
     var lector: String,
     var link: String? = null
-) {
-
-}
+)
